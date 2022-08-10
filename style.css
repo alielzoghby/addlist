@@ -1,0 +1,173 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --parent-color: #393e46;
+  --text-color: #eeeeee;
+  --btn-color: #00adb5;
+  --body-color: #40514e;
+  --color: #2c3333;
+}
+body {
+  background-color: var(--body-color);
+}
+.parent {
+  display: flex;
+  padding: 10px;
+  gap: 5px;
+  background-color: var(--parent-color);
+  width: 800px;
+  margin: 10px auto;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-container {
+  position: relative;
+  margin-top: 10px;
+}
+.input-container label {
+  position: absolute;
+  top: 11px;
+  left: 10px;
+  font-size: 16px;
+  color: var(--body-color);
+  transition: all 0.5s ease-in-out;
+}
+.input-container input {
+  border: 0;
+  border-bottom: 2px solid var(--btn-color);
+  background: transparent;
+  width: 100%;
+  padding: 8px 0 5px 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--body-color);
+  background-color: var(--text-color);
+  padding: 10px;
+  border-radius: 4px;
+}
+.input-container input:focus {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #e74c3c;
+}
+
+.input-container input:focus ~ label,
+.input-container input:valid ~ label {
+  top: -15px;
+  font-size: 12px;
+  color: var(--text-color);
+}
+
+/* ///////////////////// */
+.btn {
+  position: relative;
+  top: 5px;
+  background-color: var(--btn-color);
+  color: var(--color);
+  border: 0;
+  padding: 11px 45px;
+  border-radius: 4px;
+  font-weight: bolder;
+}
+.btn:active {
+  opacity: 0.5;
+}
+.result {
+  width: 800px;
+  padding: 10px;
+  background: var(--parent-color);
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 4px;
+  position: relative;
+  z-index: 2;
+}
+
+.main,
+.task {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  transition: opacity 0.5s, transform 1s ease-in-out;
+}
+
+.task-delete {
+  transform: translateX(-740px);
+  opacity: 0;
+}
+.main {
+  font-weight: bolder;
+  letter-spacing: 1.1px;
+  font-size: 20px;
+}
+.main .data,
+.task .data {
+  background-color: var(--text-color);
+  padding: 10px;
+  width: calc(100% / 3 - 10px);
+  border-radius: 4px;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.data-address {
+  background-color: #048f97 !important;
+}
+
+.btn-contain {
+  position: absolute;
+  right: 0px;
+  background-color: transparent;
+  align-self: center;
+  opacity: 0;
+  display: flex;
+  transition: all 1s ease-in-out;
+  z-index: -1;
+  padding: 10px 20px;
+}
+
+.btn-change {
+  position: absolute;
+  right: 0px;
+  background-color: transparent;
+  align-self: center;
+  display: flex;
+  transition: all 1s ease-in-out;
+  z-index: -1;
+  padding: 10px 20px;
+  transform: translateX(100px);
+}
+
+.task button {
+  background-color: var(--btn-color);
+  color: var(--color);
+  border: 0;
+  /* outline: none; */
+  padding: 8px 8px;
+  border-radius: 50%;
+  align-self: center;
+  margin: 0 5px;
+}
+
+.btn-delete:active,
+.btn-edite:active,
+.btn-finish:active {
+  opacity: 0.5;
+}
+.btn-finish {
+  display: none;
+}
+
+.task:hover .btn-contain {
+  display: flex;
+  opacity: 1;
+  transform: translateX(100px);
+}
