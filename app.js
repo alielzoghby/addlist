@@ -150,3 +150,12 @@ btnFinish.forEach(function (el) {
     localStorage.setItem("task", JSON.stringify(tasks));
   });
 });
+
+document.querySelectorAll(".task").forEach((el) => {
+  el.addEventListener("click", function () {
+    document
+      .querySelectorAll(".btn-change")
+      .forEach((el) => (el.className = "btn-contain"));
+    el.children[3].className = "btn-change";
+  });
+});
