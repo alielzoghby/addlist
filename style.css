@@ -28,7 +28,7 @@ body {
 
 .input-container {
   position: relative;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 .input-container label {
   position: absolute;
@@ -172,7 +172,6 @@ body {
   transform: translateX(100px);
 }
 
-
 @media screen and (max-width: 950px) {
   .result {
     width: 300px;
@@ -198,5 +197,28 @@ body {
   .task {
     font-size: 10px !important;
     padding: 2px;
+  }
+  .main .data,
+  .task .data {
+    width: calc(100% / 3 - 2%);
+  }
+  .btn-contain {
+    padding: 4px;
+    font-size: 10px;
+  }
+  .task button {
+    /* outline: none; */
+    padding: 4px;
+    font-size: 9px;
+    margin: 0 2px;
+  }
+  .btn-contain {
+    padding: 4px;
+  }
+  .btn-change {
+    transform: translateX(64px);
+  }
+  .task:hover .btn-contain {
+    transform: translateX(47px);
   }
 }
