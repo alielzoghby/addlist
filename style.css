@@ -171,3 +171,25 @@ body {
   opacity: 1;
   transform: translateX(100px);
 }
+
+
+@media screen and (max-width: 950px) {
+  .result {
+    width: 400px;
+  }
+  .parent {
+    width: 400px;
+    flex-wrap: wrap;
+    font-size: 13px;
+  }
+  .btn {
+    padding: 11px 70px;
+  }
+  .input-container {
+    width: calc(100% / 2 - 20px);
+  }
+  .main,
+  .task {
+    font-size: 13px;
+  }
+}
