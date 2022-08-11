@@ -81,13 +81,6 @@ function addtask(name, address, email, num) {
   divfive.append(btnFinish);
   DIv.append(divfive);
 
-  DIv.addEventListener("click", function () {
-    document
-      .querySelectorAll(".btn-change")
-      .forEach((el) => (el.className = "btn-contain"));
-    el.children[3].className = "btn-change";
-  });
-
   /////////////////////////////////////////////////////////////////////////////////////////////////
 
   /////////////////////////////////////////////////////////////////BTN TO DELETE ELEMENT
@@ -165,5 +158,12 @@ function addtask(name, address, email, num) {
     tasks[+num].address = address;
     tasks[+num].email = email;
     localStorage.setItem("task", JSON.stringify(tasks));
+  });
+
+  DIv.addEventListener("click", function () {
+    document
+      .querySelectorAll(".btn-change")
+      .forEach((el) => (el.className = "btn-contain"));
+    el.children[3].className = "btn-change";
   });
 }
