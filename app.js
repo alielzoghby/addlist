@@ -25,8 +25,9 @@ btn.addEventListener("click", function () {
 
     addtask(myName.value, myAddress.value, myEmail.value, tasks.length - 1);
     localStorage.setItem("task", JSON.stringify(tasks));
+
+    (myName.value = ""), (myAddress.value = ""), (myEmail.value = "");
   }
-  (myName.value = ""), (myAddress.value = ""), (myEmail.value = "");
 });
 
 //////////to adding card
@@ -70,24 +71,21 @@ function addtask(name, address, email, num) {
   btnEdite.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`;
   btnEdite.className = "btn-edite";
 
-  let btn = document.createElement("button");
-  btn.innerHTML = `<i class="fa-solid fa-circle-check"></i>`;
-  btn.setAttribute("data-num", num);
-  btn.className = "btn-finish";
+  let btnFinish = document.createElement("button");
+  btnFinish.innerHTML = `<i class="fa-solid fa-circle-check"></i>`;
+  btnFinish.setAttribute("data-num", num);
+  btnFinish.className = "btn-finish";
+
   divfive.append(btnDelete);
   divfive.append(btnEdite);
-  divfive.append(btn);
+  divfive.append(btnFinish);
   DIv.append(divfive);
 
   /////////////////////////////////////////////////////////////////////////////////////////////////
 
-  ///BTN TO DELETE ELEMENT
-}
+  /////////////////////////////////////////////////////////////////BTN TO DELETE ELEMENT
 
-let btnDelete = document.querySelectorAll(".btn-delete");
-
-btnDelete.forEach((el) =>
-  el.addEventListener("click", function () {
+  btnDelete.addEventListener("click", function () {
     let elem = this;
 
     //remove from page
@@ -101,20 +99,32 @@ btnDelete.forEach((el) =>
       elem
     );
 
-    let num = this.dataset.num;
     ///remove from local storage
     console.log(tasks.splice(num, 1));
     localStorage.setItem("task", JSON.stringify(tasks));
-  })
-);
-/////BTN TO EDITE
-let btnEdite = document.querySelectorAll(".btn-edite");
+  });
 
-btnEdite.forEach(function (el) {
-  el.addEventListener("click", function () {
+  /////////////////////////////////////////////////////////BTN TO EDITE
+  btnEdite.addEventListener("click", function () {
+    document.querySelectorAll(".task .data").forEach((el) => {
+      el.removeAttribute("contenteditable");
+      el.classList.contains("data") ? el.classList.remove("active-ceil") : el;
+
+      document
+        .querySelectorAll(".btn-finish")
+        .forEach((el) => (el.style.display = "none"));
+      document
+        .querySelectorAll(".btn-edite")
+        .forEach((el) => (el.style.display = "block"));
+    });
+
     this.style.display = "none";
     this.parentElement.children[2].style.display = "block";
     this.parentElement.className = "btn-change";
+
+    [...this.parentElement.parentElement.children].forEach((el) =>
+      el.className === "data" ? el.classList.add("active-ceil") : el
+    );
 
     for (let i = 0; i < 3; i++) {
       this.parentElement.parentElement.children[i].setAttribute(
@@ -123,13 +133,9 @@ btnEdite.forEach(function (el) {
       );
     }
   });
-});
 
-///////btn to finish
-let btnFinish = document.querySelectorAll(".btn-finish");
-
-btnFinish.forEach(function (el) {
-  el.addEventListener("click", function () {
+  ////////////////////////////////////////////////btn to finish
+  btnFinish.addEventListener("click", function () {
     this.style.display = "none";
     this.parentElement.children[1].style.display = "block";
     this.parentElement.className = "btn-contain";
@@ -144,12 +150,16 @@ btnFinish.forEach(function (el) {
     let address = this.parentElement.parentElement.children[1].textContent;
     let email = this.parentElement.parentElement.children[2].textContent;
 
+    [...this.parentElement.parentElement.children].forEach((el) =>
+      el.classList.contains("data") ? el.classList.remove("active-ceil") : el
+    );
+
     tasks[+num].name = name;
     tasks[+num].address = address;
     tasks[+num].email = email;
     localStorage.setItem("task", JSON.stringify(tasks));
   });
-});
+}
 
 document.querySelectorAll(".task").forEach((el) => {
   el.addEventListener("click", function () {
