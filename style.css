@@ -43,7 +43,7 @@ body {
   border-bottom: 2px solid var(--btn-color);
   background: transparent;
   width: 100%;
-  padding: 8px 0 5px 0;
+
   font-size: 16px;
   font-weight: bold;
   color: var(--body-color);
@@ -116,6 +116,10 @@ body {
   border-radius: 4px;
   padding: 10px;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.active-ceil {
+  background-color: #f2e2e2 !important;
 }
 
 .data-address {
