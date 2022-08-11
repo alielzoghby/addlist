@@ -164,6 +164,6 @@ function addtask(name, address, email, num) {
     document
       .querySelectorAll(".btn-change")
       .forEach((el) => (el.className = "btn-contain"));
-    el.children[3].className = "btn-change";
+    divfive.className = "btn-change";
   });
 }
